@@ -23,7 +23,7 @@ method_url={
 body_str='''	\n\t[Documentation]	 *作者：谢应彪\n\t...\t时间：%s\n%s
 	&{dic}    Get Variables
 	@{list}    Get Variables
-	${headers}    	拼装header参数    	${list}    &{dic}
-	Set To Dictionary    ${headers}    Content-type=application/%s
+	#${headers}    	拼装header参数    	${list}    &{dic}
+	Create Dictionary    ${headers}    Content-type=application/%s
 	${data}    %s    ${list}    &{dic}'''
 rf_end_body='\t[Return]    ${resp}'
