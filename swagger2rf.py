@@ -134,4 +134,4 @@ def write_api_file(file_name,swagger_file):
     file.write( rf_info.method_url.get(api_method)%('',api_path))
     # #写入结尾的信息
     file.write(rf_info.rf_end_body)
-write_api_file('C:\\Users\\Cyril\\Desktop\\test.robot','C:\\Users\\Cyril\\Desktop\\swagger.json')
+write_api_file('test.robot','swagger.json')
