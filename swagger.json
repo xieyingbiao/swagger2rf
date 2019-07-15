@@ -1,0 +1,2505 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "推广服务API",
+        "description": "推广服务API",
+        "version": "1.0.0",
+        "contact": {
+            "email": "liuyunlong@yungengxin.com"
+        }
+    },
+    "basePath": "/spread",
+    "paths": {
+        "/client/get_resource_by_position": {
+            "post": {
+                "tags": [
+                    "client"
+                ],
+                "summary": "批量按位置获取资源(已调联)",
+                "description": "批量按位置获取资源",
+                "operationId": "ClientSpreadController.批量按位置获取资源",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "true",
+                        "schema": {
+                            "$ref": "#/definitions/models.GetResourceByPositionRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ResourceByPositionResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/client/get_resource_by_spread": {
+            "get": {
+                "tags": [
+                    "client"
+                ],
+                "summary": "按推广ID获取活动资源(已联调)",
+                "description": "按推广ID获取活动资源",
+                "operationId": "ClientSpreadController.按推广ID获取活动资源",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "config_id",
+                        "description": "配置 id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "spread_id",
+                        "description": "推广 id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ResourceBySpreadResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/client/get_special_resource": {
+            "get": {
+                "tags": [
+                    "client"
+                ],
+                "summary": "获取特殊资源(未实现)",
+                "description": "获取特殊资源",
+                "operationId": "ClientSpreadController.获取特殊资源",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "config_id",
+                        "description": "配置 id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "type",
+                        "description": "0:商城，1:资讯",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SpecialResourceResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/client/launch": {
+            "post": {
+                "tags": [
+                    "client"
+                ],
+                "summary": "客户端启动初始化接口(已调联)",
+                "description": "客户端启动初始化接口",
+                "operationId": "ClientSpreadController.客户端启动初始化接口",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "环境信息",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.LaunchRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SpreadLaunchResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/omc/delete": {
+            "post": {
+                "tags": [
+                    "omc"
+                ],
+                "summary": "批量删除推广配置(已联调)",
+                "description": "批量删除推广配置",
+                "operationId": "SpreadController.批量删除推广配置",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-user-id",
+                        "description": "user-id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-username",
+                        "description": "username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "true",
+                        "schema": {
+                            "$ref": "#/definitions/models.SpreadIdList"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SpreadEmptyDataResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/omc/duplication": {
+            "get": {
+                "tags": [
+                    "omc"
+                ],
+                "summary": "复制推广配置(已联调)",
+                "description": "复制推广配置",
+                "operationId": "SpreadController.复制推广配置",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-user-id",
+                        "description": "user-id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-username",
+                        "description": "username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "spread_id",
+                        "description": "推广 id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SpreadEmptyDataResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/omc/entrance_delete": {
+            "post": {
+                "tags": [
+                    "omc"
+                ],
+                "summary": "批量删除推广配置入口(已联调)",
+                "description": "批量删除推广配置入口",
+                "operationId": "SpreadController.批量删除推广配置入口",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-user-id",
+                        "description": "user-id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-username",
+                        "description": "username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "推广配置入口Id",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.EntranceIdList"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SpreadEmptyDataResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/omc/entrance_get": {
+            "get": {
+                "tags": [
+                    "omc"
+                ],
+                "summary": "查询推广配置入口(已联调)",
+                "description": "查询推广配置入口",
+                "operationId": "SpreadController.查询推广配置入口",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-user-id",
+                        "description": "user-id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-username",
+                        "description": "username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "spread_id",
+                        "description": "推广 id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "entrance_id",
+                        "description": "推广入口 id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.EntranceGetResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/omc/entrance_get_activity_detail": {
+            "get": {
+                "tags": [
+                    "omc"
+                ],
+                "summary": "按活动id查询活动详情(已联调)",
+                "description": "按活动id查询活动详情",
+                "operationId": "SpreadController.按活动id查询活动详情",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-user-id",
+                        "description": "user-id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-username",
+                        "description": "username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "activity_id",
+                        "description": "活动 id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "activity_type",
+                        "description": "活动类型，1:悬赏活动，2:转盘活动",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "spread_id",
+                        "description": "推广 id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.EntranceGetActivityDetailResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/omc/entrance_list": {
+            "get": {
+                "tags": [
+                    "omc"
+                ],
+                "summary": "查询推广配置入口列表(已联调)",
+                "description": "查询推广配置入口列表",
+                "operationId": "SpreadController.查询推广配置入口列表",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-user-id",
+                        "description": "user-id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-username",
+                        "description": "username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "description": "页码",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "page_size",
+                        "description": "每页条数",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "spread_id",
+                        "description": "推广 id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "position_id",
+                        "description": "位置 id",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "resource_type",
+                        "description": "内容类型",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "title",
+                        "description": "标题，前缀匹配",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.EntranceListResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/omc/entrance_replace": {
+            "post": {
+                "tags": [
+                    "omc"
+                ],
+                "summary": "添加或修改推广配置入口(已联调)",
+                "description": "添加或修改推广配置入口",
+                "operationId": "SpreadController.添加或修改推广配置入口",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-user-id",
+                        "description": "user-id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-username",
+                        "description": "username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "true",
+                        "schema": {
+                            "$ref": "#/definitions/models.EntranceForm"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.EntranceReplaceResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/omc/entrance_sort": {
+            "post": {
+                "tags": [
+                    "omc"
+                ],
+                "summary": "推广入口批量排序(已联调)",
+                "description": "推广入口批量排序",
+                "operationId": "SpreadController.推广入口批量排序",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-user-id",
+                        "description": "user-id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-username",
+                        "description": "username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "推广入口批量排序值列表",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.SortRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SpreadEmptyDataResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/omc/get": {
+            "get": {
+                "tags": [
+                    "omc"
+                ],
+                "summary": "获取推广内容(已联调)",
+                "description": "获取推广内容",
+                "operationId": "SpreadController.获取推广内容",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-user-id",
+                        "description": "user-id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-username",
+                        "description": "username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "spread_id",
+                        "description": "推广 id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SpreadGetResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/omc/list": {
+            "get": {
+                "tags": [
+                    "omc"
+                ],
+                "summary": "获取推广列表(已联调)",
+                "description": "获取推广列表",
+                "operationId": "SpreadController.获取推广列表",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-user-id",
+                        "description": "user-id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-username",
+                        "description": "username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "description": "页码",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "page_size",
+                        "description": "每页条数",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "start_time",
+                        "description": "开始时间",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "end_time",
+                        "description": "结束时间",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "title",
+                        "description": "标题，前缀匹配",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SpreadListResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/omc/replace": {
+            "post": {
+                "tags": [
+                    "omc"
+                ],
+                "summary": "添加或修改推广配置(已联调)",
+                "description": "添加或修改推广配置",
+                "operationId": "SpreadController.添加或修改推广配置",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-user-id",
+                        "description": "user-id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-username",
+                        "description": "username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "true",
+                        "schema": {
+                            "$ref": "#/definitions/models.SpreadForm"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SpreadGetResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/omc/update_switch_status": {
+            "post": {
+                "tags": [
+                    "omc"
+                ],
+                "summary": "开启、关闭推广配置(已联调)",
+                "description": "开启、关闭推广配置",
+                "operationId": "SpreadController.开启、关闭推广配置",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-user-id",
+                        "description": "user-id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-username",
+                        "description": "username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "true",
+                        "schema": {
+                            "$ref": "#/definitions/models.UpdateSwitchStatus"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SpreadEmptyDataResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/omc/v2/behavior/del": {
+            "get": {
+                "tags": [
+                    "omc/v2"
+                ],
+                "summary": "删除行为开关",
+                "description": "删除行为开关",
+                "operationId": "BehaviorController.删除行为开关",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-user-id",
+                        "description": "user-id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-username",
+                        "description": "username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "id",
+                        "description": "id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.BaseResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/omc/v2/behavior/get": {
+            "get": {
+                "tags": [
+                    "omc/v2"
+                ],
+                "summary": "获取行为开关",
+                "description": "获取行为开关",
+                "operationId": "BehaviorController.获取行为开关",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-user-id",
+                        "description": "user-id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-username",
+                        "description": "username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "id",
+                        "description": "id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.GetBehaviorFlagResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/omc/v2/behavior/query": {
+            "get": {
+                "tags": [
+                    "omc/v2"
+                ],
+                "summary": "查询行为开关",
+                "description": "查询行为开关",
+                "operationId": "BehaviorController.查询行为开关",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-user-id",
+                        "description": "user-id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-username",
+                        "description": "username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "description": "page",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "page_size",
+                        "description": "page_size",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.QueryBehaviorFlagResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/omc/v2/behavior/store": {
+            "post": {
+                "tags": [
+                    "omc/v2"
+                ],
+                "summary": "添加或更新推广配置关联的行为开关",
+                "description": "添加或更新推广配置关联的行为开关",
+                "operationId": "BehaviorController.添加或更新推广配置关联的行为开关",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-user-id",
+                        "description": "user-id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-username",
+                        "description": "username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "true",
+                        "schema": {
+                            "$ref": "#/definitions/models.BehaviorForm"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.GetBehaviorFlagResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/omc/v2/id_list_form/del": {
+            "get": {
+                "tags": [
+                    "omc/v2"
+                ],
+                "summary": "删除黑白名单",
+                "description": "删除黑白名单",
+                "operationId": "BehaviorController.删除黑白名单",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-user-id",
+                        "description": "user-id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-username",
+                        "description": "username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "id",
+                        "description": "id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "list_type",
+                        "description": "list_type",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.BaseResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/omc/v2/id_list_form/get": {
+            "get": {
+                "tags": [
+                    "omc/v2"
+                ],
+                "summary": "设置黑白名单",
+                "description": "设置黑白名单",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-user-id",
+                        "description": "user-id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-username",
+                        "description": "username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "id",
+                        "description": "id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "list_type",
+                        "description": "list_type",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.GetIdListFormResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/omc/v2/id_list_form/store": {
+            "post": {
+                "tags": [
+                    "omc/v2"
+                ],
+                "summary": "设置黑白名单",
+                "description": "设置黑白名单",
+                "operationId": "BehaviorController.设置黑白名单",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-user-id",
+                        "description": "user-id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "x-username",
+                        "description": "username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "id",
+                        "description": "id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "list_type",
+                        "description": "list_type",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "id_list_form",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.IdListForm"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.BaseResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        ".false": {
+            "type": "object"
+        },
+        "models.ActivityDetailResponseData": {
+            "title": "ActivityDetailResponseData",
+            "type": "object",
+            "properties": {
+                "prize_wheel": {
+                    "description": "转盘任务详情",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.PrizeWheelItem"
+                    }
+                },
+                "quest": {
+                    "description": "悬赏任务详情",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.ActivityItem"
+                    }
+                }
+            }
+        },
+        "models.ActivityItem": {
+            "title": "ActivityItem",
+            "required": [
+                "id",
+                "reward_id",
+                "alter_reward_num"
+            ],
+            "type": "object",
+            "properties": {
+                "alter_reward_num": {
+                    "description": "必填，修改奖品数量，小于0，减库存，大于0，加库存",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "condition": {
+                    "description": "任务条件",
+                    "type": "string"
+                },
+                "has_stock": {
+                    "description": "是否有库存管理，0:无，1:有库存",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "id": {
+                    "description": "必填，子活动id或转盘活动位置",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "任务名称",
+                    "type": "string"
+                },
+                "remaining_reward_num": {
+                    "description": "奖品剩余数量",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "remaining_stock_num": {
+                    "description": "剩余库存数",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "reward_id": {
+                    "description": "必填，奖品id",
+                    "type": "string"
+                },
+                "reward_name": {
+                    "description": "奖品名称",
+                    "type": "string"
+                },
+                "reward_num": {
+                    "description": "奖品投放数量",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort_value": {
+                    "description": "排序值",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "total_stock_num": {
+                    "description": "总库存数",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "type": {
+                    "description": "任务类型",
+                    "type": "string"
+                },
+                "user_get_limit": {
+                    "description": "用户领取限制",
+                    "type": "string"
+                }
+            }
+        },
+        "models.ActivityItemForm": {
+            "title": "ActivityItemForm",
+            "type": "object",
+            "properties": {
+                "alter_reward_num": {
+                    "description": "修改奖品数量，小于0，减库存，大于0，加库存",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "id": {
+                    "description": "子活动id或转盘活动位置",
+                    "type": "string"
+                },
+                "reward_id": {
+                    "description": "奖品id",
+                    "type": "string"
+                }
+            }
+        },
+        "models.BaseResponse": {
+            "title": "BaseResponse",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "响应码，\u003c 0,系统级别异常, 0-正常，\u003e 0 用户级别异常",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "msg": {
+                    "description": "响应消息",
+                    "type": "string"
+                }
+            }
+        },
+        "models.BehaviorForm": {
+            "title": "BehaviorForm",
+            "required": [
+                "flags",
+                "area"
+            ],
+            "type": "object",
+            "properties": {
+                "area": {
+                    "description": "必填，推广区域，全国传10，精确到市，传市的地区码，市是4位地区码",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "creator": {
+                    "description": "不填，返回值，创建者名",
+                    "type": "string"
+                },
+                "flags": {
+                    "description": "必填，推广开关，字符串，只要前端自己认识，随便填啥",
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.EntranceArray": {
+            "title": "EntranceArray",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/models.EntranceData"
+            }
+        },
+        "models.EntranceBase": {
+            "title": "EntranceBase",
+            "required": [
+                "spread_id",
+                "entrance_id",
+                "position_id",
+                "title",
+                "img_url",
+                "resource_type"
+            ],
+            "type": "object",
+            "properties": {
+                "content": {
+                    "description": "活动内容",
+                    "type": "string"
+                },
+                "desc": {
+                    "description": "入口简介",
+                    "type": "string"
+                },
+                "entrance_id": {
+                    "description": "必填，入口 id ",
+                    "type": "string"
+                },
+                "img_url": {
+                    "description": "必填，入口图片",
+                    "type": "string"
+                },
+                "label": {
+                    "description": "标签",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "position_id": {
+                    "description": "必填，入口位置 id",
+                    "type": "string"
+                },
+                "resource_type": {
+                    "description": "必填，内容类型 image = 1;url = 2; app = 3;activity = 4; ",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "spread_id": {
+                    "description": "必填，推广 id ",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "必填，入口名称",
+                    "type": "string"
+                }
+            }
+        },
+        "models.EntranceData": {
+            "title": "EntranceData",
+            "type": "object",
+            "properties": {
+                "desc": {
+                    "description": "入口简介",
+                    "type": "string"
+                },
+                "img_url": {
+                    "description": "入口图片",
+                    "type": "string"
+                },
+                "label": {
+                    "description": "标签",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "position_id": {
+                    "description": "入口位置 id",
+                    "type": "string"
+                },
+                "resource_content": {
+                    "$ref": "#/definitions/models.ResourceContent",
+                    "description": "内容结构"
+                },
+                "resource_type": {
+                    "description": "内容类型 image = 1;url = 2; app = 3;activity = 4;",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "sort": {
+                    "description": "排序值，越大越靠前",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "spread_id": {
+                    "description": "推广 id",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "入口名称",
+                    "type": "string"
+                }
+            }
+        },
+        "models.EntranceForm": {
+            "title": "EntranceForm",
+            "required": [
+                "resource_content"
+            ],
+            "type": "object",
+            "properties": {
+                "content": {
+                    "description": "活动内容",
+                    "type": "string"
+                },
+                "desc": {
+                    "description": "入口简介",
+                    "type": "string"
+                },
+                "entrance_id": {
+                    "description": "必填，入口 id ",
+                    "type": "string"
+                },
+                "img_url": {
+                    "description": "必填，入口图片",
+                    "type": "string"
+                },
+                "label": {
+                    "description": "标签",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "position_id": {
+                    "description": "必填，入口位置 id",
+                    "type": "string"
+                },
+                "resource_content": {
+                    "$ref": "#/definitions/models.ResourceContentForm",
+                    "description": "必填，内容结构"
+                },
+                "resource_type": {
+                    "description": "必填，内容类型 image = 1;url = 2; app = 3;activity = 4; ",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "spread_id": {
+                    "description": "必填，推广 id ",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "必填，入口名称",
+                    "type": "string"
+                }
+            }
+        },
+        "models.EntranceGetActivityDetailResponse": {
+            "title": "EntranceGetActivityDetailResponse",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "data": {
+                    "$ref": "#/definitions/models.ActivityDetailResponseData"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.EntranceGetResponse": {
+            "title": "EntranceGetResponse",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "data": {
+                    "$ref": "#/definitions/models.EntranceGetResponseData"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.EntranceGetResponseData": {
+            "title": "EntranceGetResponseData",
+            "type": "object",
+            "properties": {
+                "content": {
+                    "description": "活动内容",
+                    "type": "string"
+                },
+                "desc": {
+                    "description": "入口简介",
+                    "type": "string"
+                },
+                "entrance_id": {
+                    "description": "必填，入口 id ",
+                    "type": "string"
+                },
+                "img_url": {
+                    "description": "必填，入口图片",
+                    "type": "string"
+                },
+                "label": {
+                    "description": "标签",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "position_id": {
+                    "description": "必填，入口位置 id",
+                    "type": "string"
+                },
+                "resource_content": {
+                    "$ref": "#/definitions/models.ResourceContent",
+                    "description": "内容结构"
+                },
+                "resource_type": {
+                    "description": "必填，内容类型 image = 1;url = 2; app = 3;activity = 4; ",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "spread_id": {
+                    "description": "必填，推广 id ",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "必填，入口名称",
+                    "type": "string"
+                }
+            }
+        },
+        "models.EntranceIdList": {
+            "title": "EntranceIdList",
+            "required": [
+                "spread_id",
+                "entrance_id_list"
+            ],
+            "type": "object",
+            "properties": {
+                "entrance_id_list": {
+                    "description": "必填，推广入口 id",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "spread_id": {
+                    "description": "必填，推广id",
+                    "type": "string"
+                }
+            }
+        },
+        "models.EntranceList": {
+            "title": "EntranceList",
+            "type": "object",
+            "properties": {
+                "content": {
+                    "description": "活动内容",
+                    "type": "string"
+                },
+                "desc": {
+                    "description": "入口说明",
+                    "type": "string"
+                },
+                "entrance_id": {
+                    "description": "入口 id",
+                    "type": "string"
+                },
+                "img_url": {
+                    "description": "入口图片",
+                    "type": "string"
+                },
+                "position_id": {
+                    "description": "排序id",
+                    "type": "string"
+                },
+                "position_name": {
+                    "description": "位置名称",
+                    "type": "string"
+                },
+                "resource_type_name": {
+                    "description": "资源类型名称",
+                    "type": "string"
+                },
+                "sort_value": {
+                    "description": "排序值",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "description": "入口名称",
+                    "type": "string"
+                }
+            }
+        },
+        "models.EntranceListData": {
+            "title": "EntranceListData",
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.EntranceList"
+                    }
+                },
+                "page": {
+                    "description": "页码",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "page_size": {
+                    "description": "每页条数",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "total": {
+                    "description": "总条数",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "total_page": {
+                    "description": "总页数",
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.EntranceListResponse": {
+            "title": "EntranceListResponse",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "data": {
+                    "$ref": "#/definitions/models.EntranceListData"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.EntranceReplaceResponse": {
+            "title": "EntranceReplaceResponse",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "data": {
+                    "$ref": "#/definitions/models.EntranceForm"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.EnvContent": {
+            "title": "EnvContent",
+            "required": [
+                "env_type",
+                "id",
+                "name"
+            ],
+            "type": "object",
+            "properties": {
+                "env_type": {
+                    "description": "环境类型，1:云无盘，2:云计费,3:熊猫掌柜",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "名称",
+                    "type": "string"
+                }
+            }
+        },
+        "models.GetBehaviorFlagResponse": {
+            "title": "GetBehaviorFlagResponse",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "data": {
+                    "$ref": "#/definitions/models.BehaviorForm",
+                    "description": "开关字符串，前端随意传，只要自己认识"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.GetIdListFormResponse": {
+            "title": "GetIdListFormResponse",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "data": {
+                    "$ref": "#/definitions/models.IdListForm"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.GetResourceByPositionRequest": {
+            "title": "GetResourceByPositionRequest",
+            "required": [
+                "config_id",
+                "position_id_list"
+            ],
+            "type": "object",
+            "properties": {
+                "config_id": {
+                    "description": "配置 id",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "position_id_list": {
+                    "description": "位置 id列表，必填 ，悬浮图标，floating_box_top_left:悬浮图标左上,floating_box_top_right:悬浮图标右上,floating_box_bottom_left:悬浮图标左下,floating_box_bottom_right:悬浮图标右下；首页 index_top:首页上部,index_bottom:首页下部",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "models.IdListForm": {
+            "title": "IdListForm",
+            "type": "object",
+            "properties": {
+                "black_list": {
+                    "description": "必填，完全按照填写更新",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.EnvContent"
+                    }
+                },
+                "id": {
+                    "type": "string"
+                },
+                "list_type": {
+                    "description": "必填，黑白名单对应的主体，behavior-行为,spread-推广",
+                    "type": "string"
+                },
+                "white_list": {
+                    "description": "必填，完全按照填写更新",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.EnvContent"
+                    }
+                }
+            }
+        },
+        "models.LaunchRequest": {
+            "title": "LaunchRequest",
+            "required": [
+                "env_content"
+            ],
+            "type": "object",
+            "properties": {
+                "env_content": {
+                    "description": "环境",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.EnvContent"
+                    }
+                }
+            }
+        },
+        "models.NullData": {
+            "title": "NullData",
+            "type": "object"
+        },
+        "models.PageData": {
+            "title": "PageData",
+            "type": "object",
+            "properties": {
+                "page": {
+                    "description": "页码",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "page_size": {
+                    "description": "每页条数",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "total": {
+                    "description": "总条数",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "total_page": {
+                    "description": "总页数",
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.PrizeWheelItem": {
+            "title": "PrizeWheelItem",
+            "required": [
+                "id",
+                "reward_id",
+                "alter_reward_num"
+            ],
+            "type": "object",
+            "properties": {
+                "alter_reward_num": {
+                    "description": "必填，修改奖品数量，小于0，减库存，大于0，加库存",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "has_stock": {
+                    "description": "是否有库存管理，0:无，1:有库存",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "id": {
+                    "description": "必填，转盘活动位置",
+                    "type": "string"
+                },
+                "prize_rate": {
+                    "description": "中奖概率",
+                    "type": "string"
+                },
+                "remaining_reward_num": {
+                    "description": "奖品剩余数量",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "remaining_stock_num": {
+                    "description": "剩余库存数",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "reward_id": {
+                    "description": "必填，奖品id",
+                    "type": "string"
+                },
+                "reward_name": {
+                    "description": "奖品名称",
+                    "type": "string"
+                },
+                "reward_num": {
+                    "description": "奖品投放数量",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "total_stock_num": {
+                    "description": "总库存数",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "user_prize_limit": {
+                    "description": "用户中奖限制",
+                    "type": "string"
+                }
+            }
+        },
+        "models.QueryBehaviorFlagData": {
+            "title": "QueryBehaviorFlagData",
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.BehaviorForm"
+                    }
+                },
+                "page": {
+                    "description": "页码",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "page_size": {
+                    "description": "每页条数",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "total": {
+                    "description": "总条数",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "total_page": {
+                    "description": "总页数",
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.QueryBehaviorFlagResponse": {
+            "title": "QueryBehaviorFlagResponse",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "data": {
+                    "$ref": "#/definitions/models.QueryBehaviorFlagData"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.ResourceActivity": {
+            "title": "ResourceActivity",
+            "type": "object",
+            "properties": {
+                "activity_id": {
+                    "description": "必填，活动id",
+                    "type": "string"
+                },
+                "activity_item_list": {
+                    "description": "悬赏活动必填，活动详情",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.ActivityItem"
+                    }
+                },
+                "activity_name": {
+                    "description": "必填，活动名称",
+                    "type": "string"
+                },
+                "activity_type": {
+                    "description": "必填，1:悬赏任务， 2:转盘任务",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "prize_wheel_item_list": {
+                    "description": "转盘必填，转盘详情",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.PrizeWheelItem"
+                    }
+                }
+            }
+        },
+        "models.ResourceActivityBase": {
+            "title": "ResourceActivityBase",
+            "required": [
+                "activity_type",
+                "activity_id",
+                "activity_name"
+            ],
+            "type": "object",
+            "properties": {
+                "activity_id": {
+                    "description": "必填，活动id",
+                    "type": "string"
+                },
+                "activity_name": {
+                    "description": "必填，活动名称",
+                    "type": "string"
+                },
+                "activity_type": {
+                    "description": "必填，1:悬赏任务， 2:转盘任务",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "models.ResourceActivityForm": {
+            "title": "ResourceActivityForm",
+            "type": "object",
+            "properties": {
+                "activity_id": {
+                    "description": "必填，活动id",
+                    "type": "string"
+                },
+                "activity_item_list": {
+                    "description": "活动详情",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.ActivityItemForm"
+                    }
+                },
+                "activity_name": {
+                    "description": "必填，活动名称",
+                    "type": "string"
+                },
+                "activity_type": {
+                    "description": "必填，1:悬赏任务， 2:转盘任务",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "models.ResourceApp": {
+            "title": "ResourceApp",
+            "required": [
+                "type",
+                "content"
+            ],
+            "type": "object",
+            "properties": {
+                "content": {
+                    "description": "必填，id 或 路径",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "必填，1:应用 id, 2:应用路径",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "models.ResourceByPositionData": {
+            "title": "ResourceByPositionData",
+            "type": "object",
+            "properties": {
+                "entrance": {
+                    "$ref": "#/definitions/models.EntranceArray",
+                    "description": "位置 id对应的资源列表"
+                },
+                "flags": {
+                    "description": "行为开关",
+                    "type": "string"
+                }
+            }
+        },
+        "models.ResourceByPositionResponse": {
+            "title": "ResourceByPositionResponse",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "data": {
+                    "$ref": "#/definitions/models.ResourceByPositionData"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.ResourceBySpreadData": {
+            "title": "ResourceBySpreadData",
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.ResourceActivityBase"
+                    }
+                }
+            }
+        },
+        "models.ResourceBySpreadResponse": {
+            "title": "ResourceBySpreadResponse",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "data": {
+                    "$ref": "#/definitions/models.ResourceBySpreadData"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.ResourceContent": {
+            "title": "ResourceContent",
+            "type": "object",
+            "properties": {
+                "activity": {
+                    "$ref": "#/definitions/models.ResourceActivity",
+                    "description": "活动资源"
+                },
+                "app": {
+                    "$ref": "#/definitions/models.ResourceApp",
+                    "description": "应用资源"
+                },
+                "url": {
+                    "$ref": "#/definitions/models.ResourceUrl",
+                    "description": "链接资源"
+                }
+            }
+        },
+        "models.ResourceContentForm": {
+            "title": "ResourceContentForm",
+            "type": "object",
+            "properties": {
+                "activity": {
+                    "$ref": "#/definitions/models.ResourceActivityForm",
+                    "description": "活动资源"
+                },
+                "app": {
+                    "$ref": "#/definitions/models.ResourceApp",
+                    "description": "应用资源"
+                },
+                "url": {
+                    "$ref": "#/definitions/models.ResourceUrl",
+                    "description": "链接资源"
+                }
+            }
+        },
+        "models.ResourceUrl": {
+            "title": "ResourceUrl",
+            "required": [
+                "url"
+            ],
+            "type": "object",
+            "properties": {
+                "url": {
+                    "description": "必填，链接地址",
+                    "type": "string"
+                }
+            }
+        },
+        "models.SortRequest": {
+            "title": "SortRequest",
+            "required": [
+                "sort_request_list"
+            ],
+            "type": "object",
+            "properties": {
+                "sort_request_list": {
+                    "description": "排序请示",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.SortRequestItem"
+                    }
+                }
+            }
+        },
+        "models.SortRequestItem": {
+            "title": "SortRequestItem",
+            "required": [
+                "entrance_id",
+                "sort_value"
+            ],
+            "type": "object",
+            "properties": {
+                "entrance_id": {
+                    "description": "入口 id",
+                    "type": "string"
+                },
+                "sort_value": {
+                    "description": "排序值",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "models.SpecialResourceResponse": {
+            "title": "SpecialResourceResponse",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "data": {
+                    "$ref": "#/definitions/models.SpecialResourceResponseData"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.SpecialResourceResponseData": {
+            "title": "SpecialResourceResponseData",
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.SpecialResourceResponseDataList"
+                    }
+                }
+            }
+        },
+        "models.SpecialResourceResponseDataList": {
+            "title": "SpecialResourceResponseDataList",
+            "type": "object",
+            "properties": {
+                "resource_id": {
+                    "description": "资源 id",
+                    "type": "string"
+                }
+            }
+        },
+        "models.Spread": {
+            "title": "Spread",
+            "type": "object",
+            "properties": {
+                "area": {
+                    "description": "推广区域",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "created_at": {
+                    "description": "创建时间",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "creator": {
+                    "description": "创建人",
+                    "type": "string"
+                },
+                "end_time": {
+                    "description": "结束时间",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "spread_id": {
+                    "description": "推广 Id",
+                    "type": "string"
+                },
+                "start_time": {
+                    "description": "开始时间",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "status": {
+                    "description": "推广状态，1:正常，2:已下架",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "description": "推广标题",
+                    "type": "string"
+                }
+            }
+        },
+        "models.SpreadEmptyDataResponse": {
+            "title": "SpreadEmptyDataResponse",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "data": {
+                    "$ref": "#/definitions/models.NullData"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.SpreadForm": {
+            "title": "SpreadForm",
+            "required": [
+                "spread_id",
+                "title",
+                "area"
+            ],
+            "type": "object",
+            "properties": {
+                "area": {
+                    "description": "必填，推广区域，全国传10，精确到市，传市的地区码，市是4位地区码",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "end_time": {
+                    "description": "结束时间",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "spread_id": {
+                    "description": "必填，推广 id",
+                    "type": "string"
+                },
+                "start_time": {
+                    "description": "生效时间",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "title": {
+                    "description": "必填，标题",
+                    "type": "string"
+                }
+            }
+        },
+        "models.SpreadGetResponse": {
+            "title": "SpreadGetResponse",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "data": {
+                    "$ref": "#/definitions/models.SpreadForm"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.SpreadIdList": {
+            "title": "SpreadIdList",
+            "required": [
+                "spread_id_list"
+            ],
+            "type": "object",
+            "properties": {
+                "spread_id_list": {
+                    "description": "必填，推广 id",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "models.SpreadLaunchResponse": {
+            "title": "SpreadLaunchResponse",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "data": {
+                    "$ref": "#/definitions/models.SpreadLaunchResponseData"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.SpreadLaunchResponseData": {
+            "title": "SpreadLaunchResponseData",
+            "type": "object",
+            "properties": {
+                "config_id": {
+                    "description": "配置 id",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "spread_id_list": {
+                    "description": "推广id列表",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "models.SpreadListData": {
+            "title": "SpreadListData",
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Spread"
+                    }
+                },
+                "page": {
+                    "description": "页码",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "page_size": {
+                    "description": "每页条数",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "total": {
+                    "description": "总条数",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "total_page": {
+                    "description": "总页数",
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.SpreadListResponse": {
+            "title": "SpreadListResponse",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "data": {
+                    "$ref": "#/definitions/models.SpreadListData"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UpdateSwitchStatus": {
+            "title": "UpdateSwitchStatus",
+            "required": [
+                "spread_id_list",
+                "status"
+            ],
+            "type": "object",
+            "properties": {
+                "spread_id_list": {
+                    "description": "必填，推广 id",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "status": {
+                    "description": "1:正常，2:下架",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "omc",
+            "description": "omc 推广配置\n"
+        },
+        {
+            "name": "omc/v2",
+            "description": "omc 推广配置\n"
+        },
+        {
+            "name": "client",
+            "description": "推广客户端接口\n"
+        }
+    ]
+}
