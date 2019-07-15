@@ -153,5 +153,6 @@ def write_api_file(file_name, swagger_file):
         # #写入结尾的信息
         file.write(rf_info.rf_end_body)
 
-
-write_api_file('test.robot', 'swagger.json')
+if __name__ == '__main__':
+    write_api_file('test.robot', 'swagger.json')
+    pass
